@@ -1,0 +1,9 @@
+global using Basket.API.Models;
+global using Common.CQRS;
+global using Carter;
+global using Mapster;
+global using MediatR;
+global using FluentValidation;
+global using Common.Behaviors;
+global using Common.Exceptions;
+global using Basket.API.Data;
