@@ -40,11 +40,11 @@ services:
       - "6000:8080"
       - "6060:8081"
   
-  catalog.api:
-    image: catalogapi:local
+  basket.api:
+    image: basketapi:local
     build:
       context: .
-      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+      dockerfile: Services/Basket/Basket.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
