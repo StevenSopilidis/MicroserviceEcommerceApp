@@ -56,6 +56,20 @@ services:
       - "7000:8080"
       - "7070:8081"
 
+  discount.api:
+    image: discountapi:local
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Data Source=discountdb
+    ports:
+      - "9000:8080"
+      - "9090:8081"
+
+
   distributedcache:
     image: redis
     restart: always
