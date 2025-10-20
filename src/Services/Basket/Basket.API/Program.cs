@@ -1,8 +1,11 @@
 using Common.Exceptions.Handler;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using ImTools;
 using Marten;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection;
+using Grpc.Net.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +32,11 @@ builder.Services.AddStackExchangeRedisCache(opts =>
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opts => 
+{
+    opts.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
