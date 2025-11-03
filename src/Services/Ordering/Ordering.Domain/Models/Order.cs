@@ -20,10 +20,7 @@ namespace Ordering.Domain.Models
         public decimal TotalPrice
         {
             get => OrderItems.Sum(o => o.Price * o.Quantity);
-            private set {},
-,
-,
-,
+            private set {}
         }
 
         public static Order Create(
