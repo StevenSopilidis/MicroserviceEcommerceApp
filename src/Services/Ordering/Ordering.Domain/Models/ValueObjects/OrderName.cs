@@ -2,6 +2,7 @@ using Ordering.Domain.Exceptions;
 
 namespace Ordering.Domain.Models.ValueObjects
 {
+    
     public record OrderName
     {
         private const int DefaultLength = 5; 

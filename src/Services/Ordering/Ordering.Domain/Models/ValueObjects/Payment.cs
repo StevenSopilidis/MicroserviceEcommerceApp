@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Ordering.Domain.Models.ValueObjects
 {
+    [ComplexType]
     public record Payment
     {
         public string? CardName { get; } = default!;
