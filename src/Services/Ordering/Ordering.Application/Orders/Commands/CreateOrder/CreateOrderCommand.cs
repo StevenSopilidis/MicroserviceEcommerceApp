@@ -1,0 +1,22 @@
+using System.Windows.Input;
+using Common.CQRS;
+using FluentValidation;
+using Ordering.Application.Dtos;
+
+namespace Ordering.Application.Orders.Commands.CreateOrder
+{
+    public record CreateOrderResult(Guid Id);
+    
+    public record CreateOrderCommand(OrderDto Order)
+        : ICommand<CreateOrderResult>;
+
+    public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
+    {
+        public CreateOrderCommandValidator()
+        {
+            RuleFor(c => c.Order.OrderName).NotEmpty().WithMessage("Name is required");
+            RuleFor(c => c.Order.CustomerId).NotNull().WithMessage("CustomId is required");
+            RuleFor(c => c.Order.OrderItems).NotEmpty().WithMessage("OrderItems should not be empty");
+        }
+    }
+}

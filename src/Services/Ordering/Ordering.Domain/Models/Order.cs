@@ -45,13 +45,13 @@ namespace Ordering.Domain.Models
 
         public void Update(
             OrderName orderName, Address shippingAddress, 
-            Address billingAddress, Payment payment)
+            Address billingAddress, Payment payment, OrderStatus status)
         {
             OrderName = orderName;
             ShippingAddress = shippingAddress;
             BillingAddress = billingAddress;
             Payment = payment;
-            Status = OrderStatus.Pending;
+            Status = status;
 
             AddDomainEvent(new OrderUpdatedEvent(this));
         }
